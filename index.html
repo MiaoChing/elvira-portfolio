@@ -387,8 +387,10 @@
     width:100%; aspect-ratio: 4/5; border-radius: var(--radius);
     background: linear-gradient(160deg,#efe2c8,#cdb185);
     display:flex; align-items:center; justify-content:center; border: 1px solid var(--line);
+    overflow:hidden; position:relative;
   }
   .pdf-icon svg{ width:44px; height:44px; fill: var(--wine); }
+  .pdf-icon img{ width:100%; height:100%; object-fit:cover; display:block; }
   .pdf-card h3{ font-size: 1.3rem; }
   .pdf-card p{ font-size: 0.98rem; }
 
@@ -407,20 +409,21 @@
   .portrait-note .pn-icon svg{ width:22px; height:22px; }
   .portrait-note p{ font-size: 1rem; margin-bottom:0; }
   .portrait-gallery{
-    display:grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 120px; gap: 14px;
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px;
   }
+  .portrait-card-wrap{ display:flex; flex-direction:column; gap:12px; }
   .portrait-frame{
     border-radius: var(--radius); overflow:hidden;
     background: linear-gradient(165deg,#e7d3ad,#a97e51 55%,#5b3d24);
     border: 1px solid var(--line); position:relative; cursor:pointer;
-    display:block; width:100%; height:100%; margin:0; padding:0;
+    display:block; width:100%; aspect-ratio: 4/5; margin:0; padding:0;
     font-family: inherit; text-align:left; appearance:none;
   }
-  .portrait-frame.pf-tall{ grid-row: span 3; grid-column: span 2; }
-  .portrait-frame.pf-wide{ grid-row: span 2; grid-column: span 1; }
-  .portrait-frame.pf-square{ grid-row: span 2; grid-column: span 1; }
-  .portrait-frame.pf-low{ grid-row: span 2; grid-column: span 2; }
-  .portrait-frame img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .portrait-frame img{ width:100%; height:100%; object-fit:cover; object-position: center 25%; display:block; }
+  .portrait-frame img.op-bottom{ object-position: center 88%; }
+  .portrait-caption{ text-align:center; }
+  .portrait-caption h4{ font-family: var(--serif); font-size:1.05rem; margin:0 0 2px; color: var(--ink); }
+  .portrait-caption span{ font-size:0.8rem; letter-spacing:0.08em; color: var(--ink-faint); text-transform:uppercase; }
 
   /* Portfolio sub-blocks */
   .portfolio-block{ margin-bottom: 76px; }
@@ -553,9 +556,7 @@
     .hero{ padding: 90px 20px 0; min-height: 560px; background-position: 65% center; }
     .portfolio-grid{ grid-template-columns: 1fr; }
     .pdf-card{ grid-column: span 1; }
-    .portrait-gallery{ grid-template-columns: repeat(2, 1fr); grid-auto-rows: 110px; }
-    .portrait-frame.pf-tall{ grid-column: span 2; grid-row: span 3; }
-    .portrait-frame.pf-low{ grid-column: span 2; grid-row: span 2; }
+    .portrait-gallery{ grid-template-columns: repeat(2, 1fr); gap: 18px; }
   }
   @media (max-width: 480px){
     .container{ padding: 0 20px; }
@@ -682,22 +683,34 @@
 
         <div class="portrait-layout">
           <div class="portrait-gallery">
-            <button type="button" class="portrait-frame pf-tall reveal" data-series="s1" aria-haspopup="dialog">
-              <img src="images/portrait-01.jpg" alt="巴黎人像攝影作品，電影感氛圍，待上傳實際照片" data-i18n-alt="item5.alt1" loading="lazy" onerror="this.style.display='none'">
-              <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
-            </button>
-            <button type="button" class="portrait-frame pf-square reveal" data-series="s2" aria-haspopup="dialog">
-              <img src="images/portrait-02.jpg" alt="巴黎街頭自然人像，待上傳實際照片" data-i18n-alt="item5.alt2" loading="lazy" onerror="this.style.display='none'">
-              <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
-            </button>
-            <button type="button" class="portrait-frame pf-wide reveal" data-series="s3" aria-haspopup="dialog">
-              <img src="images/portrait-03.jpg" alt="巴黎咖啡館人像側寫，待上傳實際照片" data-i18n-alt="item5.alt3" loading="lazy" onerror="this.style.display='none'">
-              <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
-            </button>
-            <button type="button" class="portrait-frame pf-low reveal" data-series="s4" aria-haspopup="dialog">
-              <img src="images/portrait-04.jpg" alt="巴黎夜景人像，電影感光影，待上傳實際照片" data-i18n-alt="item5.alt4" loading="lazy" onerror="this.style.display='none'">
-              <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
-            </button>
+            <div class="portrait-card-wrap reveal">
+              <button type="button" class="portrait-frame" data-series="s1" aria-haspopup="dialog">
+                <img src="images/portrait-01.jpg" alt="巴黎日常穿搭人像，自然光線與街景" data-i18n-alt="item5.alt1" loading="lazy" onerror="this.style.display='none'">
+                <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
+              </button>
+              <div class="portrait-caption"><h4 data-i18n="series.s1">巴黎日常</h4></div>
+            </div>
+            <div class="portrait-card-wrap reveal">
+              <button type="button" class="portrait-frame" data-series="s2" aria-haspopup="dialog">
+                <img src="images/portrait-02.jpg" alt="婚紗人像，浪漫氛圍" data-i18n-alt="item5.alt2" loading="lazy" onerror="this.style.display='none'">
+                <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
+              </button>
+              <div class="portrait-caption"><h4 data-i18n="series.s2">婚紗物語</h4></div>
+            </div>
+            <div class="portrait-card-wrap reveal">
+              <button type="button" class="portrait-frame" data-series="s3" aria-haspopup="dialog">
+                <img src="images/portrait-03.jpg" alt="義大利湖畔人像，度假氛圍" data-i18n-alt="item5.alt3" loading="lazy" onerror="this.style.display='none'">
+                <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
+              </button>
+              <div class="portrait-caption"><h4 data-i18n="series.s3">義式假期</h4></div>
+            </div>
+            <div class="portrait-card-wrap reveal">
+              <button type="button" class="portrait-frame" data-series="s4" aria-haspopup="dialog">
+                <img class="op-bottom" src="images/portrait-04.jpg" alt="巴黎街拍人像，城市光影" data-i18n-alt="item5.alt4" loading="lazy" onerror="this.style.display='none'">
+                <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
+              </button>
+              <div class="portrait-caption"><h4 data-i18n="series.s4">漫遊街拍</h4></div>
+            </div>
           </div>
 
           <aside class="portrait-note reveal">
@@ -708,14 +721,6 @@
       </div>
 
       <!-- 作品：短影片創作（Instagram Reels） -->
-      <!--
-        作品：短影片創作（Instagram Reels）
-        每張卡片現在可以放「真實的影片封面截圖」：
-        請將手機截圖存下該部影片的封面畫面，存成 images/reel-01-cover.jpg（依序 01/02/03），
-        圖片放上去之後就會自動蓋掉下面的咖啡色底圖。若還沒放照片，會維持咖啡色底圖 + 播放鍵。
-        （另一個選項是改用 Instagram 官方嵌入功能，可以直接播放影片，但畫面樣式會變成 Instagram 自己的版型，
-        無法完全跟網站風格一致——如果妳想要那種效果，跟我說一聲，我可以幫妳換成那個版本。）
-      -->
       <div class="portfolio-block">
         <div class="portfolio-subhead">
           <span class="num">02</span>
@@ -723,9 +728,9 @@
         </div>
 
         <div class="portfolio-grid">
-          <a class="portfolio-card reveal" href="https://www.instagram.com/reel/DShsL7yjN8B/?igsh=ZTl6MXBvZm5mMjRq" target="_blank" rel="noopener noreferrer">
+          <a class="portfolio-card reveal" href="https://www.instagram.com/reel/DZSD_6VIfxV/?igsh=MWl3NW9tdTFnY3JzaA==" target="_blank" rel="noopener noreferrer">
             <div class="portfolio-thumb">
-              <img src="images/reel-01-cover.jpg" alt="旅行紀錄影片封面，待上傳" loading="lazy" onerror="this.style.display='none'">
+              <img src="images/reel-01-cover.jpg" alt="法國小鎮街道旅行紀錄影片封面" loading="lazy" onerror="this.style.display='none'">
               <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg></span>
             </div>
             <div class="portfolio-body">
@@ -735,9 +740,9 @@
             </div>
           </a>
 
-          <a class="portfolio-card reveal" href="https://www.instagram.com/reel/DShsL7yjN8B/?igsh=ZTl6MXBvZm5mMjRq" target="_blank" rel="noopener noreferrer">
+          <a class="portfolio-card reveal" href="https://www.instagram.com/reel/DULGfYwDIMk/?igsh=MTY2djdrZzVwbTF2bA==" target="_blank" rel="noopener noreferrer">
             <div class="portfolio-thumb">
-              <img src="images/reel-02-cover.jpg" alt="餐廳開箱影片封面，待上傳" loading="lazy" onerror="this.style.display='none'">
+              <img src="images/reel-02-cover.jpg" alt="餐廳自助百匯餐廳開箱影片封面" loading="lazy" onerror="this.style.display='none'">
               <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg></span>
             </div>
             <div class="portfolio-body">
@@ -749,7 +754,7 @@
 
           <a class="portfolio-card reveal" href="https://www.instagram.com/reel/DShsL7yjN8B/?igsh=ZTl6MXBvZm5mMjRq" target="_blank" rel="noopener noreferrer">
             <div class="portfolio-thumb">
-              <img src="images/reel-03-cover.jpg" alt="旅行攻略影片封面，待上傳" loading="lazy" onerror="this.style.display='none'">
+              <img src="images/reel-03-cover.jpg" alt="多洛米蒂旅行攻略影片封面" loading="lazy" onerror="this.style.display='none'">
               <span class="play-badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8V4z"/></svg></span>
             </div>
             <div class="portfolio-body">
@@ -775,26 +780,26 @@
 
         <div class="pdf-row">
           <div class="pdf-card reveal">
-            <div class="pdf-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm2 2v12h12V6H6zm2 2h8v2H8V8zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+            <div class="pdf-icon">
+              <img src="images/guide-paris-cover.jpg" alt="巴黎旅行攻略封面" loading="lazy" onerror="this.style.display='none'">
             </div>
             <div>
-              <span class="portfolio-tag" data-i18n="a11y.newTab">Heyzine</span>
+              <span class="portfolio-tag">PDF</span>
               <h3 data-i18n="item4.title">巴黎旅行攻略｜免費限時領取</h3>
               <p data-i18n="item4.desc">在巴黎生活的這半年，走過一些街道、看過一些風景，也慢慢記錄下屬於自己的巴黎生活軌跡。這份攻略整理了 12 大熱門景點、博物館參觀攻略與票價資訊、10 個在地人推薦的私房活動，以及交通、住宿等實用小提醒。希望把這些生活裡累積的小經驗，分享給即將來到巴黎的你，讓你的巴黎旅行少一點匆忙，多一點從容與享受。</p>
-              <a class="btn btn-outline" style="color:var(--ink); border-color:var(--ink);" href="https://heyzine.com/flip-book/1745fc5ea5.html" target="_blank" rel="noopener noreferrer" data-i18n="item4.cta">查看線上手冊</a>
+              <a class="btn btn-outline" style="color:var(--ink); border-color:var(--ink);" href="files/travel-guide-paris.pdf" download target="_blank" rel="noopener noreferrer" data-i18n="item4.cta">下載 PDF</a>
             </div>
           </div>
 
           <div class="pdf-card reveal">
-            <div class="pdf-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2zm8 1.5V8h4.5L14 3.5zM8 13h2.2c1.1 0 1.9.7 1.9 1.8S11.3 16.6 10.2 16.6H9v1.9H8V13zm1 .9v1.8h1c.5 0 .9-.3.9-.9s-.4-.9-.9-.9H9zm4.2-.9h2c1.4 0 2.3 1 2.3 2.75S16.6 18.5 15.2 18.5h-2V13zm1 .9v3.7h1c.8 0 1.3-.6 1.3-1.85s-.5-1.85-1.3-1.85h-1z"/></svg>
+            <div class="pdf-icon">
+              <img src="images/guide-dolomites-cover.jpg" alt="多洛米蒂旅行攻略封面" loading="lazy" onerror="this.style.display='none'">
             </div>
             <div>
-              <span class="portfolio-tag">PDF</span>
+              <span class="portfolio-tag" data-i18n="a11y.heyzine">Heyzine</span>
               <h3 data-i18n="item4b.title">多洛米蒂旅行攻略｜免費限時領取</h3>
               <p data-i18n="item4b.desc">把一路看見的風景、走過的路，以及那些旅行途中才知道的小事，都記錄在這份攻略裡。從必訪景點、經典路線、交通方式、住宿建議，到行程安排與實用小提醒，把多洛米蒂旅行前需要知道的資訊整理在一起。希望這份攻略，能讓你在出發之前多一點準備，也在真正抵達山裡的那一刻，更自在地享受眼前的風景。</p>
-              <a class="btn btn-outline" style="color:var(--ink); border-color:var(--ink);" href="files/travel-guide-2.pdf" target="_blank" rel="noopener noreferrer" data-i18n="item4b.cta">下載 PDF</a>
+              <a class="btn btn-outline" style="color:var(--ink); border-color:var(--ink);" href="https://heyzine.com/flip-book/1745fc5ea5.html" target="_blank" rel="noopener noreferrer" data-i18n="item4b.cta">查看線上手冊</a>
             </div>
           </div>
         </div>
@@ -863,7 +868,6 @@
     <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">&#8250;</button>
     <div class="lightbox-info">
       <h4 id="lightboxTitle"></h4>
-      <p id="lightboxNote"></p>
       <span id="lightboxCount" class="lightbox-count"></span>
     </div>
   </div>
@@ -895,8 +899,9 @@
       "item1.title": "旅行紀錄", "item1.desc": "記錄旅途中的風景與心情切片。",
       "item2.title": "餐廳開箱", "item2.desc": "巴黎在地餐廳的第一手味覺體驗。",
       "item3.title": "旅行攻略", "item3.desc": "實用又浪漫的歐洲旅行小提醒。",
-      "item4.title": "巴黎旅行攻略｜免費限時領取", "item4.desc": "在巴黎生活的這半年，走過一些街道、看過一些風景，也慢慢記錄下屬於自己的巴黎生活軌跡。這份攻略整理了 12 大熱門景點、博物館參觀攻略與票價資訊、10 個在地人推薦的私房活動，以及交通、住宿等實用小提醒。希望把這些生活裡累積的小經驗，分享給即將來到巴黎的你，讓你的巴黎旅行少一點匆忙，多一點從容與享受。", "item4.cta": "查看線上手冊",
-      "item4b.title": "多洛米蒂旅行攻略｜免費限時領取", "item4b.desc": "把一路看見的風景、走過的路，以及那些旅行途中才知道的小事，都記錄在這份攻略裡。從必訪景點、經典路線、交通方式、住宿建議，到行程安排與實用小提醒，把多洛米蒂旅行前需要知道的資訊整理在一起。希望這份攻略，能讓你在出發之前多一點準備，也在真正抵達山裡的那一刻，更自在地享受眼前的風景。", "item4b.cta": "下載 PDF",
+      "item4.title": "巴黎旅行攻略｜免費限時領取", "item4.desc": "在巴黎生活的這半年，走過一些街道、看過一些風景，也慢慢記錄下屬於自己的巴黎生活軌跡。這份攻略整理了 12 大熱門景點、博物館參觀攻略與票價資訊、10 個在地人推薦的私房活動，以及交通、住宿等實用小提醒。希望把這些生活裡累積的小經驗，分享給即將來到巴黎的你，讓你的巴黎旅行少一點匆忙，多一點從容與享受。", "item4.cta": "下載 PDF",
+      "item4b.title": "多洛米蒂旅行攻略｜免費限時領取", "item4b.desc": "把一路看見的風景、走過的路，以及那些旅行途中才知道的小事，都記錄在這份攻略裡。從必訪景點、經典路線、交通方式、住宿建議，到行程安排與實用小提醒，把多洛米蒂旅行前需要知道的資訊整理在一起。希望這份攻略，能讓你在出發之前多一點準備，也在真正抵達山裡的那一刻，更自在地享受眼前的風景。", "item4b.cta": "查看線上手冊",
+      "a11y.heyzine": "Heyzine",
       "portfolio.pdf_note": "若需要協助規劃行程或是巴黎地陪，歡迎私訊報價 →",
       "item5.tag": "個人寫真｜情侶旅拍", "item5.title": "個人寫真｜情侶旅拍",
       "item5.desc": "記錄你最自然的模樣，把巴黎的光影、日常與浪漫，留成一段屬於你的電影。",
@@ -905,10 +910,11 @@
       "item5.seriesNote": "同系列・同一位模特兒",
       "item5.moreAlt": "同系列人像作品，待上傳實際照片",
       "item5.reassure": "如果你沒有拍攝經驗，也不用擔心。我會在拍攝過程中給予簡單的引導，從姿勢、動作到情緒，讓你慢慢放鬆下來，不需要成為一個專業模特兒，只需要做自己。",
-      "item5.alt1": "巴黎人像攝影作品，電影感氛圍，待上傳實際照片",
-      "item5.alt2": "巴黎街頭自然人像，待上傳實際照片",
-      "item5.alt3": "巴黎咖啡館人像側寫，待上傳實際照片",
-      "item5.alt4": "巴黎夜景人像，電影感光影，待上傳實際照片",
+      "item5.alt1": "巴黎日常穿搭人像，自然光線與街景",
+      "item5.alt2": "婚紗人像，浪漫氛圍",
+      "item5.alt3": "義大利湖畔人像，度假氛圍",
+      "item5.alt4": "巴黎街拍人像，城市光影",
+      "series.s1": "巴黎日常", "series.s2": "婚紗物語", "series.s3": "義式假期", "series.s4": "漫遊街拍",
       "contact.eyebrow": "聯繫方式", "contact.title": "聯繫方式",
       "contact.subtitle": "想預約拍攝、討論旅行規劃，或短影片合作，都歡迎與我聯繫。",
       "contact.email": "電子郵件", "contact.ig": "Instagram", "contact.linkedin": "LinkedIn",
@@ -935,8 +941,9 @@
       "item1.title": "Carnet de voyage", "item1.desc": "Paysages et émotions glanés en chemin.",
       "item2.title": "Découverte culinaire", "item2.desc": "Une première bouchée des restaurants parisiens.",
       "item3.title": "Guide de voyage", "item3.desc": "Astuces pratiques et romantiques pour voyager en Europe.",
-      "item4.title": "Guide de voyage à Paris | Téléchargement gratuit, offre limitée", "item4.desc": "Après ces six derniers mois passés à vivre à Paris, j'ai arpenté certaines rues, découvert des vues, et peu à peu tracé mon propre chemin dans cette ville. Ce guide rassemble 12 lieux incontournables, des conseils pratiques pour visiter les musées (horaires et tarifs), 10 activités secrètes recommandées par des habitants, ainsi que des astuces utiles sur les transports et l'hébergement. J'espère que ces petites expériences accumulées au fil du temps pourront vous aider, à vous qui vous apprêtez à découvrir Paris, pour un voyage plus serein et moins pressé.", "item4.cta": "Voir le livret en ligne",
-      "item4b.title": "Guide de voyage dans les Dolomites | Téléchargement gratuit, offre limitée", "item4b.desc": "Les paysages traversés, les chemins parcourus, et ces petites choses qu'on n'apprend qu'en voyageant : tout est rassemblé dans ce guide. Des sites incontournables aux itinéraires classiques, en passant par les transports, les hébergements, la planification et des astuces pratiques — tout ce qu'il faut savoir avant de partir dans les Dolomites. J'espère que ce guide vous aidera à mieux vous préparer avant le départ, et à profiter pleinement du paysage dès votre arrivée en montagne.", "item4b.cta": "Télécharger le PDF",
+      "item4.title": "Guide de voyage à Paris | Téléchargement gratuit, offre limitée", "item4.desc": "Après ces six derniers mois passés à vivre à Paris, j'ai arpenté certaines rues, découvert des vues, et peu à peu tracé mon propre chemin dans cette ville. Ce guide rassemble 12 lieux incontournables, des conseils pratiques pour visiter les musées (horaires et tarifs), 10 activités secrètes recommandées par des habitants, ainsi que des astuces utiles sur les transports et l'hébergement. J'espère que ces petites expériences accumulées au fil du temps pourront vous aider, à vous qui vous apprêtez à découvrir Paris, pour un voyage plus serein et moins pressé.", "item4.cta": "Télécharger le PDF",
+      "item4b.title": "Guide de voyage dans les Dolomites | Téléchargement gratuit, offre limitée", "item4b.desc": "Les paysages traversés, les chemins parcourus, et ces petites choses qu'on n'apprend qu'en voyageant : tout est rassemblé dans ce guide. Des sites incontournables aux itinéraires classiques, en passant par les transports, les hébergements, la planification et des astuces pratiques — tout ce qu'il faut savoir avant de partir dans les Dolomites. J'espère que ce guide vous aidera à mieux vous préparer avant le départ, et à profiter pleinement du paysage dès votre arrivée en montagne.", "item4b.cta": "Voir le livret en ligne",
+      "a11y.heyzine": "Heyzine",
       "portfolio.pdf_note": "Pour une aide à la planification de votre itinéraire ou un accompagnement local à Paris, n'hésitez pas à me contacter pour un devis →",
       "item5.tag": "Portraits individuels | Couples en voyage", "item5.title": "Portraits individuels | Couples en voyage",
       "item5.desc": "Capturer votre plus grand naturel, pour transformer la lumière, le quotidien et la douceur de Paris en un film qui vous appartient.",
@@ -945,10 +952,11 @@
       "item5.seriesNote": "Même série · même modèle",
       "item5.moreAlt": "Autre photo de la même série, photo à venir",
       "item5.reassure": "Si vous n'avez aucune expérience devant l'objectif, pas d'inquiétude. Je vous guide simplement tout au long de la séance — la posture, les gestes, l'émotion — pour vous aider à vous détendre peu à peu. Pas besoin d'être mannequin professionnel, juste d'être vous-même.",
-      "item5.alt1": "Portrait à Paris, ambiance cinématographique, photo à venir",
-      "item5.alt2": "Portrait naturel dans les rues de Paris, photo à venir",
-      "item5.alt3": "Portrait dans un café parisien, photo à venir",
-      "item5.alt4": "Portrait nocturne à Paris, lumière cinématographique, photo à venir",
+      "item5.alt1": "Portrait quotidien à Paris, lumière naturelle et scènes de rue",
+      "item5.alt2": "Portrait de mariage, ambiance romantique",
+      "item5.alt3": "Portrait au bord du lac italien, ambiance de vacances",
+      "item5.alt4": "Portrait de rue à Paris, lumière urbaine",
+      "series.s1": "Le Quotidien Parisien", "series.s2": "Récit de Mariage", "series.s3": "Escapade Italienne", "series.s4": "Flâneries Parisiennes",
       "contact.eyebrow": "Contact", "contact.title": "Contact",
       "contact.subtitle": "Pour une séance photo, un projet de voyage, ou une collaboration vidéo, n'hésitez pas à me contacter.",
       "contact.email": "E-mail", "contact.ig": "Instagram", "contact.linkedin": "LinkedIn",
@@ -975,8 +983,9 @@
       "item1.title": "Travel Diary", "item1.desc": "Landscapes and moments gathered along the way.",
       "item2.title": "Restaurant Finds", "item2.desc": "A first taste of Paris's local restaurants.",
       "item3.title": "Travel Guide", "item3.desc": "Practical, romantic notes for travelling Europe.",
-      "item4.title": "Paris Travel Guide | Free, Limited-Time Download", "item4.desc": "Over these past six months living in Paris, I've wandered certain streets, taken in certain views, and slowly traced out my own path through this city. This guide brings together 12 must-see spots, museum visiting tips with ticket info, 10 local-recommended hidden activities, plus practical notes on transport and accommodation. I hope these small experiences, gathered from everyday life here, can help you as you prepare for Paris — for a trip that's a little less rushed, and a little more unhurried.", "item4.cta": "View the flipbook",
-      "item4b.title": "Dolomites Travel Guide | Free, Limited-Time Download", "item4b.desc": "The views along the way, the paths I walked, and the small things you only learn while traveling — they're all captured in this guide. From must-visit spots and classic routes to transport, accommodation, itinerary planning, and practical tips, it brings together everything worth knowing before a Dolomites trip. I hope this guide helps you prepare a little more before you set off, and lets you settle into the view a little more easily the moment you reach the mountains.", "item4b.cta": "Download PDF",
+      "item4.title": "Paris Travel Guide | Free, Limited-Time Download", "item4.desc": "Over these past six months living in Paris, I've wandered certain streets, taken in certain views, and slowly traced out my own path through this city. This guide brings together 12 must-see spots, museum visiting tips with ticket info, 10 local-recommended hidden activities, plus practical notes on transport and accommodation. I hope these small experiences, gathered from everyday life here, can help you as you prepare for Paris — for a trip that's a little less rushed, and a little more unhurried.", "item4.cta": "Download PDF",
+      "item4b.title": "Dolomites Travel Guide | Free, Limited-Time Download", "item4b.desc": "The views along the way, the paths I walked, and the small things you only learn while traveling — they're all captured in this guide. From must-visit spots and classic routes to transport, accommodation, itinerary planning, and practical tips, it brings together everything worth knowing before a Dolomites trip. I hope this guide helps you prepare a little more before you set off, and lets you settle into the view a little more easily the moment you reach the mountains.", "item4b.cta": "View the flipbook",
+      "a11y.heyzine": "Heyzine",
       "portfolio.pdf_note": "Need help planning your itinerary, or a local guide in Paris? Feel free to message me for a quote →",
       "item5.tag": "Personal Portraits | Couples' Travel Photography", "item5.title": "Personal Portraits | Couples' Travel Photography",
       "item5.desc": "Capturing your most natural self — turning Paris's light, everyday moments, and romance into a film that's uniquely yours.",
@@ -985,10 +994,11 @@
       "item5.seriesNote": "Same series · same model",
       "item5.moreAlt": "Another photo from the same series, photo to be uploaded",
       "item5.reassure": "If you have no experience in front of the camera, don't worry. I'll guide you gently through the shoot — posture, movement, emotion — helping you relax little by little. You don't need to be a professional model, just be yourself.",
-      "item5.alt1": "Cinematic Paris portrait, photo to be uploaded",
-      "item5.alt2": "Natural street portrait in Paris, photo to be uploaded",
-      "item5.alt3": "Portrait at a Paris café, photo to be uploaded",
-      "item5.alt4": "Paris night portrait with cinematic light, photo to be uploaded",
+      "item5.alt1": "Everyday Paris portrait, natural light and street scenes",
+      "item5.alt2": "Wedding portrait, romantic atmosphere",
+      "item5.alt3": "Italian lakeside portrait, vacation mood",
+      "item5.alt4": "Paris street portrait, urban light and shadow",
+      "series.s1": "Parisian Everyday", "series.s2": "Wedding Story", "series.s3": "Italian Escape", "series.s4": "Streets of Paris",
       "contact.eyebrow": "Contact", "contact.title": "Contact",
       "contact.subtitle": "For bookings, trip planning, or short-video collaborations, feel free to reach out.",
       "contact.email": "Email", "contact.ig": "Instagram", "contact.linkedin": "LinkedIn",
@@ -1035,40 +1045,38 @@
   // Each image needs a `src`; `altKey` can point to an existing translation key,
   // or omit it to fall back to the generic "item5.moreAlt" text.
   var portraitSeries = {
-    s1: { label: "01", images: [
+    s1: { label: "01", labelKey: "series.s1", images: [
       { src: "images/portrait-01.jpg", altKey: "item5.alt1" },
-      { src: "images/portrait-01-2.jpg" },
-      { src: "images/portrait-01-3.jpg" },
-      { src: "images/portrait-01-4.jpg" },
-      { src: "images/portrait-01-5.jpg" }
+      { src: "images/portrait-01-2.jpg", altKey: "item5.alt1" },
+      { src: "images/portrait-01-3.jpg", altKey: "item5.alt1" },
+      { src: "images/portrait-01-4.jpg", altKey: "item5.alt1" }
     ]},
-    s2: { label: "02", images: [
+    s2: { label: "02", labelKey: "series.s2", images: [
       { src: "images/portrait-02.jpg", altKey: "item5.alt2" },
-      { src: "images/portrait-02-2.jpg" },
-      { src: "images/portrait-02-3.jpg" },
-      { src: "images/portrait-02-4.jpg" },
-      { src: "images/portrait-02-5.jpg" }
+      { src: "images/portrait-02-2.jpg", altKey: "item5.alt2" },
+      { src: "images/portrait-02-3.jpg", altKey: "item5.alt2" }
     ]},
-    s3: { label: "03", images: [
+    s3: { label: "03", labelKey: "series.s3", images: [
       { src: "images/portrait-03.jpg", altKey: "item5.alt3" },
-      { src: "images/portrait-03-2.jpg" },
-      { src: "images/portrait-03-3.jpg" },
-      { src: "images/portrait-03-4.jpg" },
-      { src: "images/portrait-03-5.jpg" }
+      { src: "images/portrait-03-2.jpg", altKey: "item5.alt3" },
+      { src: "images/portrait-03-3.jpg", altKey: "item5.alt3" },
+      { src: "images/portrait-03-4.jpg", altKey: "item5.alt3" },
+      { src: "images/portrait-03-5.jpg", altKey: "item5.alt3" },
+      { src: "images/portrait-03-6.jpg", altKey: "item5.alt3" }
     ]},
-    s4: { label: "04", images: [
+    s4: { label: "04", labelKey: "series.s4", images: [
       { src: "images/portrait-04.jpg", altKey: "item5.alt4" },
-      { src: "images/portrait-04-2.jpg" },
-      { src: "images/portrait-04-3.jpg" },
-      { src: "images/portrait-04-4.jpg" },
-      { src: "images/portrait-04-5.jpg" }
+      { src: "images/portrait-04-2.jpg", altKey: "item5.alt4" },
+      { src: "images/portrait-04-3.jpg", altKey: "item5.alt4" },
+      { src: "images/portrait-04-4.jpg", altKey: "item5.alt4" },
+      { src: "images/portrait-04-5.jpg", altKey: "item5.alt4" },
+      { src: "images/portrait-04-6.jpg", altKey: "item5.alt4" }
     ]}
   };
 
   var lightboxEl = document.getElementById("lightbox");
   var lightboxImg = document.getElementById("lightboxImg");
   var lightboxTitle = document.getElementById("lightboxTitle");
-  var lightboxNote = document.getElementById("lightboxNote");
   var lightboxCount = document.getElementById("lightboxCount");
   var lightboxPrev = document.getElementById("lightboxPrev");
   var lightboxNext = document.getElementById("lightboxNext");
@@ -1083,8 +1091,8 @@
     lightboxImg.style.display = "";
     lightboxImg.src = img.src;
     lightboxImg.alt = (img.altKey && dict[img.altKey]) ? dict[img.altKey] : dict["item5.moreAlt"];
-    lightboxTitle.textContent = (dict["item5.seriesLabel"] || "") + " " + currentSeries.label;
-    lightboxNote.textContent = dict["item5.seriesNote"] || "";
+    var themeName = (currentSeries.labelKey && dict[currentSeries.labelKey]) ? dict[currentSeries.labelKey] : "";
+    lightboxTitle.textContent = themeName ? themeName : ((dict["item5.seriesLabel"] || "") + " " + currentSeries.label);
     lightboxCount.textContent = (currentIndex + 1) + " / " + currentSeries.images.length;
   }
 
