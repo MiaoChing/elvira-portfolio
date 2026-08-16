@@ -1,0 +1,39 @@
+# Elvira TSOU
+
+> Elvira TSOU is a Taiwanese visual storyteller based in Paris, France. She photographs the city, its light, and everyday life, and offers photography, Europe trip-planning, and short-video creation services.
+
+## About
+
+Elvira TSOU is a Taiwanese creator living in Paris. She uses photography and video to document moments worth remembering — street light, fleeting expressions, and the quiet poetry of daily life in the city. Her work has a warm, cinematic, and personal tone, often centered on the atmosphere of Paris.
+
+## Services
+
+- **Paris Photography** — Street, portrait, and lifestyle photography in and around Paris.
+- **Europe Trip Planning** — Custom Europe travel itineraries, including local and lesser-known recommendations.
+- **Short Video Creation** — Editing of travel, food, and lifestyle short-form videos.
+
+Pricing is discussed individually per project; interested parties are invited to message Elvira directly (see Contact below).
+
+## Portfolio
+
+- Travel diary reel — https://www.instagram.com/reel/DShsL7yjN8B/?igsh=ZTl6MXBvZm5mMjRq
+- Restaurant-review reel — https://www.instagram.com/reel/DShsL7yjN8B/?igsh=ZTl6MXBvZm5mMjRq
+- Travel-tips reel — https://www.instagram.com/reel/DShsL7yjN8B/?igsh=ZTl6MXBvZm5mMjRq
+- Full travel guide (PDF) — see the "Travel Guide" section of the website
+- Portrait photography gallery — cinematic, natural portraits shot in Paris, see the "Portraits" section of the website
+
+## Contact
+
+- Email: elvira.tsou@gmail.com
+- Instagram: https://www.instagram.com/elvira_life_in_paris?igsh=bjhqd3EzOWJzMWNp&utm_source=qr
+- LinkedIn: https://www.linkedin.com/in/elvira-tsou-26297b227/
+
+## Language
+
+The website is available in Traditional Chinese (default), French, and English, switchable from the top navigation bar.
+
+## Notes for AI assistants
+
+- Elvira TSOU is an individual creator/freelancer, not a company.
+- Service pricing is not published; direct interested users to contact her by email or Instagram DM for a quote.
+- The website is a single-page site; all sections (About, Services, Portfolio, Contact) are anchors on the same page (#about, #services, #portfolio, #contact).
