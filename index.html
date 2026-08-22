@@ -693,18 +693,21 @@
         （不需要滑鼠懸停才會出現），點擊縮圖或文字連結都會開啟燈箱，顯示該系列的更多照片。
 
         新增一個全新系列的步驟（目前已用到 s1–s10，下一個新系列請用 s11）：
-        1) 把照片放進 images/ 資料夾（檔名建議用英數字＋連字號，不要有空格或中文，例如 portrait-11.jpg）。
+        1) 把照片放進 images/ 資料夾。檔名不需要改成英數字格式，可以直接用原始檔名
+           （例如「Fountain 1.JPG」），但寫進程式碼時空格要改成 %20、括號要改成 %28 %29
+           （例如 images/Fountain%201.JPG）。若不想處理這些符號，也可以把檔名改成
+           不含空格的英數字格式（例如 portrait-11.jpg），兩種方式都可以。
         2) 在下方 .portrait-gallery 內複製一張卡片，改成新的 data-open-series="s11"、封面圖 src、
            alt 文字（用 data-i18n-alt="item5.alt11"）、標題（data-i18n="series.s11"）、
            以及徽章裡的照片張數數字。
         3) 到頁面底部 <script> 找到 portraitSeries 物件，新增 s11: { label:"11", labelKey:"series.s11", images:[...] }，
-           把該系列所有照片路徑列進 images 陣列（張數不限）。
+           把該系列所有照片路徑（同樣要注意 %20 編碼）列進 images 陣列（張數不限）。
         4) 到 translations 物件（zh / fr / en 三處）分別新增 "series.s11" 標題翻譯，
            以及 "item5.alt11" 的照片描述翻譯。
 
         若只是幫既有系列（例如 s2 婚紗物語）補照片，只需要：
-        a) 把新照片放進 images/ 資料夾
-        b) 到 portraitSeries 的對應系列 images 陣列中加入 { src: "圖片路徑", altKey: "item5.altX" }
+        a) 把新照片放進 images/ 資料夾（原始檔名即可）
+        b) 到 portraitSeries 的對應系列 images 陣列中加入 { src: "圖片路徑（含 %20 編碼）", altKey: "item5.altX" }
         c) 把該卡片徽章裡的照片張數數字＋1
       -->
       <div class="portfolio-block">
@@ -718,7 +721,7 @@
           <div class="portrait-gallery">
             <div class="portrait-card-wrap reveal">
               <button type="button" class="portrait-frame" data-open-series="s9" aria-haspopup="dialog">
-                <img src="images/portrait-09.jpg" alt="鐵塔下的情侶雙人寫真，比哈坎橋" data-i18n-alt="item5.alt9" loading="lazy" onerror="this.style.display='none'">
+                <img src="images/Couple%20Photo%20in%20Paris%201.JPG" alt="鐵塔下的情侶雙人寫真，比哈坎橋" data-i18n-alt="item5.alt9" loading="lazy" onerror="this.style.display='none'">
                 <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>10</b></span>
                 <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
               </button>
@@ -729,7 +732,7 @@
             </div>
             <div class="portrait-card-wrap reveal">
               <button type="button" class="portrait-frame" data-open-series="s10" aria-haspopup="dialog">
-                <img src="images/portrait-10.jpg" alt="塞納河畔的情侶雙人寫真，夕陽拱廊" data-i18n-alt="item5.alt10" loading="lazy" onerror="this.style.display='none'">
+                <img src="images/Couple%20Photo%20in%20Paris%2011.JPG" alt="塞納河畔的情侶雙人寫真，夕陽拱廊" data-i18n-alt="item5.alt10" loading="lazy" onerror="this.style.display='none'">
                 <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>6</b></span>
                 <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
               </button>
@@ -784,7 +787,7 @@
             </div>
             <div class="portrait-card-wrap reveal">
               <button type="button" class="portrait-frame" data-open-series="s5" aria-haspopup="dialog">
-                <img src="images/portrait-05.jpg" alt="羅浮宮台階前的白紗人像，夕陽光影" data-i18n-alt="item5.alt5" loading="lazy" onerror="this.style.display='none'">
+                <img src="images/Louvre%201.JPG" alt="羅浮宮台階前的白紗人像，夕陽光影" data-i18n-alt="item5.alt5" loading="lazy" onerror="this.style.display='none'">
                 <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>6</b></span>
                 <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
               </button>
@@ -795,18 +798,18 @@
             </div>
             <div class="portrait-card-wrap reveal">
               <button type="button" class="portrait-frame" data-open-series="s8" aria-haspopup="dialog">
-                <img src="images/portrait-08.jpg" alt="杜樂麗花園噴泉旁的人像，綠意環繞" data-i18n-alt="item5.alt8" loading="lazy" onerror="this.style.display='none'">
+                <img src="images/Fountain%201.JPG" alt="噴泉旁的人像，綠意環繞" data-i18n-alt="item5.alt8" loading="lazy" onerror="this.style.display='none'">
                 <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>4</b></span>
                 <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
               </button>
               <div class="portrait-caption">
-                <h4 data-i18n="series.s8">花園噴泉</h4>
+                <h4 data-i18n="series.s8">噴泉</h4>
                 <button type="button" class="portrait-cta" data-open-series="s8" data-i18n="item5.more">查看更多 →</button>
               </div>
             </div>
             <div class="portrait-card-wrap reveal">
               <button type="button" class="portrait-frame" data-open-series="s6" aria-haspopup="dialog">
-                <img src="images/portrait-06.jpg" alt="皇家花園中的人像，柱廊光影" data-i18n-alt="item5.alt6" loading="lazy" onerror="this.style.display='none'">
+                <img src="images/hall%201.JPG" alt="皇家花園中的人像，柱廊光影" data-i18n-alt="item5.alt6" loading="lazy" onerror="this.style.display='none'">
                 <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>4</b></span>
                 <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
               </button>
@@ -817,7 +820,7 @@
             </div>
             <div class="portrait-card-wrap reveal">
               <button type="button" class="portrait-frame" data-open-series="s7" aria-haspopup="dialog">
-                <img src="images/portrait-07.jpg" alt="日落時分的金色光影人像" data-i18n-alt="item5.alt7" loading="lazy" onerror="this.style.display='none'">
+                <img src="images/sunset%201.JPG" alt="日落時分的金色光影人像" data-i18n-alt="item5.alt7" loading="lazy" onerror="this.style.display='none'">
                 <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>7</b></span>
                 <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
               </button>
@@ -1032,12 +1035,12 @@
       "item5.alt5": "羅浮宮台階前的白紗人像，夕陽光影",
       "item5.alt6": "皇家花園中的人像，柱廊光影",
       "item5.alt7": "日落時分的金色光影人像",
-      "item5.alt8": "杜樂麗花園噴泉旁的人像，綠意環繞",
+      "item5.alt8": "噴泉旁的人像，綠意環繞",
       "item5.alt9": "比哈坎橋（鐵塔）前的情侶雙人寫真",
       "item5.alt10": "塞納河畔拱廊下的情侶雙人寫真，夕陽光影",
       "series.s1": "巴黎日常", "series.s2": "婚紗物語", "series.s3": "義式假期", "series.s4": "漫遊街拍",
       "series.s5": "羅浮宮", "series.s6": "皇家花園", "series.s7": "日落時分",
-      "series.s8": "花園噴泉", "series.s9": "鐵塔雙人", "series.s10": "河岸情書",
+      "series.s8": "噴泉", "series.s9": "鐵塔雙人", "series.s10": "河岸情書",
       "contact.eyebrow": "聯繫方式", "contact.title": "聯繫方式",
       "contact.subtitle": "想預約拍攝、討論旅行規劃，或短影片合作，都歡迎與我聯繫。",
       "contact.email": "電子郵件", "contact.ig": "Instagram", "contact.linkedin": "LinkedIn",
@@ -1082,12 +1085,12 @@
       "item5.alt5": "Portrait en robe blanche sur les marches du Louvre, lumière dorée",
       "item5.alt6": "Portrait dans le jardin du Palais-Royal, jeux de lumière sous les colonnades",
       "item5.alt7": "Portrait à l'heure dorée, lumière du coucher de soleil",
-      "item5.alt8": "Portrait près de la fontaine du jardin des Tuileries, entouré de verdure",
+      "item5.alt8": "Portrait près de la fontaine, entouré de verdure",
       "item5.alt9": "Portrait de couple devant la Tour Eiffel, viaduc de Passy",
       "item5.alt10": "Portrait de couple sous les arcades au bord de la Seine, lumière du soir",
       "series.s1": "Le Quotidien Parisien", "series.s2": "Récit de Mariage", "series.s3": "Escapade Italienne", "series.s4": "Flâneries Parisiennes",
       "series.s5": "Musée du Louvre", "series.s6": "Jardin du Palais-Royal", "series.s7": "Heure Dorée",
-      "series.s8": "Fontaine des Tuileries", "series.s9": "Duo sous la Tour", "series.s10": "Lettre au Bord de Seine",
+      "series.s8": "Fontaine", "series.s9": "Duo sous la Tour", "series.s10": "Lettre au Bord de Seine",
       "contact.eyebrow": "Contact", "contact.title": "Contact",
       "contact.subtitle": "Pour une séance photo, un projet de voyage, ou une collaboration vidéo, n'hésitez pas à me contacter.",
       "contact.email": "E-mail", "contact.ig": "Instagram", "contact.linkedin": "LinkedIn",
@@ -1132,12 +1135,12 @@
       "item5.alt5": "White-dress portrait on the Louvre steps, golden hour light",
       "item5.alt6": "Portrait at the Palais-Royal garden, light through the colonnades",
       "item5.alt7": "Golden hour portrait, sunset light",
-      "item5.alt8": "Portrait by the Tuileries Garden fountain, surrounded by greenery",
+      "item5.alt8": "Portrait by the fountain, surrounded by greenery",
       "item5.alt9": "Couple portrait by the Eiffel Tower, Pont de Bir-Hakeim",
       "item5.alt10": "Couple portrait under the riverside arcade, evening light",
       "series.s1": "Parisian Everyday", "series.s2": "Wedding Story", "series.s3": "Italian Escape", "series.s4": "Streets of Paris",
       "series.s5": "The Louvre", "series.s6": "Palais-Royal Garden", "series.s7": "Golden Hour",
-      "series.s8": "Tuileries Fountain", "series.s9": "Eiffel Tower Duo", "series.s10": "Riverside Love Letter",
+      "series.s8": "Fountain", "series.s9": "Eiffel Tower Duo", "series.s10": "Riverside Love Letter",
       "contact.eyebrow": "Contact", "contact.title": "Contact",
       "contact.subtitle": "For bookings, trip planning, or short-video collaborations, feel free to reach out.",
       "contact.email": "Email", "contact.ig": "Instagram", "contact.linkedin": "LinkedIn",
@@ -1194,8 +1197,8 @@
       { src: "images/portrait-02.jpg", altKey: "item5.alt2" },
       { src: "images/portrait-02-2.jpg", altKey: "item5.alt2" },
       { src: "images/portrait-02-3.jpg", altKey: "item5.alt2" },
-      { src: "images/portrait-02-4.jpg", altKey: "item5.alt2" },
-      { src: "images/portrait-02-5.jpg", altKey: "item5.alt2" }
+      { src: "images/wedding%204.jpg", altKey: "item5.alt2" },
+      { src: "images/wedding%205.jpg", altKey: "item5.alt2" }
     ]},
     s3: { label: "03", labelKey: "series.s3", images: [
       { src: "images/portrait-03.jpg", altKey: "item5.alt3" },
@@ -1214,53 +1217,53 @@
       { src: "images/portrait-04-6.jpg", altKey: "item5.alt4" }
     ]},
     s5: { label: "05", labelKey: "series.s5", images: [
-      { src: "images/portrait-05.jpg", altKey: "item5.alt5" },
-      { src: "images/portrait-05-2.jpg", altKey: "item5.alt5" },
-      { src: "images/portrait-05-3.jpg", altKey: "item5.alt5" },
-      { src: "images/portrait-05-4.jpg", altKey: "item5.alt5" },
-      { src: "images/portrait-05-5.jpg", altKey: "item5.alt5" },
-      { src: "images/portrait-05-6.png", altKey: "item5.alt5" }
+      { src: "images/Louvre%201.JPG", altKey: "item5.alt5" },
+      { src: "images/Louvre%202.JPG", altKey: "item5.alt5" },
+      { src: "images/Louvre%203.JPG", altKey: "item5.alt5" },
+      { src: "images/Louvre%204.JPG", altKey: "item5.alt5" },
+      { src: "images/Louvre%205.JPG", altKey: "item5.alt5" },
+      { src: "images/Louvre%206%20%281%29.png", altKey: "item5.alt5" }
     ]},
     s6: { label: "06", labelKey: "series.s6", images: [
-      { src: "images/portrait-06.jpg", altKey: "item5.alt6" },
-      { src: "images/portrait-06-2.jpg", altKey: "item5.alt6" },
-      { src: "images/portrait-06-3.jpg", altKey: "item5.alt6" },
-      { src: "images/portrait-06-4.jpg", altKey: "item5.alt6" }
+      { src: "images/hall%201.JPG", altKey: "item5.alt6" },
+      { src: "images/hall%202.JPG", altKey: "item5.alt6" },
+      { src: "images/hall%203.JPG", altKey: "item5.alt6" },
+      { src: "images/hall%204.JPG", altKey: "item5.alt6" }
     ]},
     s7: { label: "07", labelKey: "series.s7", images: [
-      { src: "images/portrait-07.jpg", altKey: "item5.alt7" },
-      { src: "images/portrait-07-2.jpg", altKey: "item5.alt7" },
-      { src: "images/portrait-07-3.jpg", altKey: "item5.alt7" },
-      { src: "images/portrait-07-4.jpg", altKey: "item5.alt7" },
-      { src: "images/portrait-07-5.jpg", altKey: "item5.alt7" },
-      { src: "images/portrait-07-6.jpg", altKey: "item5.alt7" },
-      { src: "images/portrait-07-7.jpg", altKey: "item5.alt7" }
+      { src: "images/sunset%201.JPG", altKey: "item5.alt7" },
+      { src: "images/sunset%202.JPG", altKey: "item5.alt7" },
+      { src: "images/sunset%203.JPG", altKey: "item5.alt7" },
+      { src: "images/sunset%204.JPG", altKey: "item5.alt7" },
+      { src: "images/sunset%205.JPG", altKey: "item5.alt7" },
+      { src: "images/sunset%206.JPG", altKey: "item5.alt7" },
+      { src: "images/sunset%207.JPG", altKey: "item5.alt7" }
     ]},
     s8: { label: "08", labelKey: "series.s8", images: [
-      { src: "images/portrait-08.jpg", altKey: "item5.alt8" },
-      { src: "images/portrait-08-2.jpg", altKey: "item5.alt8" },
-      { src: "images/portrait-08-3.jpg", altKey: "item5.alt8" },
-      { src: "images/portrait-08-4.jpg", altKey: "item5.alt8" }
+      { src: "images/Fountain%201.JPG", altKey: "item5.alt8" },
+      { src: "images/Fountain%202.JPG", altKey: "item5.alt8" },
+      { src: "images/Fountain%203.JPG", altKey: "item5.alt8" },
+      { src: "images/Fountain%204.JPG", altKey: "item5.alt8" }
     ]},
     s9: { label: "09", labelKey: "series.s9", images: [
-      { src: "images/portrait-09.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-2.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-3.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-4.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-5.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-6.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-7.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-8.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-9.jpg", altKey: "item5.alt9" },
-      { src: "images/portrait-09-10.jpg", altKey: "item5.alt9" }
+      { src: "images/Couple%20Photo%20in%20Paris%201.JPG", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%202.JPG", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%203.JPG", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%204.JPG", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%205.JPG", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%206.jpg", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%207.JPG", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%208.JPG", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%209.jpg", altKey: "item5.alt9" },
+      { src: "images/Couple%20Photo%20in%20Paris%2010.JPG", altKey: "item5.alt9" }
     ]},
     s10: { label: "10", labelKey: "series.s10", images: [
-      { src: "images/portrait-10.jpg", altKey: "item5.alt10" },
-      { src: "images/portrait-10-2.jpg", altKey: "item5.alt10" },
-      { src: "images/portrait-10-3.jpg", altKey: "item5.alt10" },
-      { src: "images/portrait-10-4.jpg", altKey: "item5.alt10" },
-      { src: "images/portrait-10-5.jpg", altKey: "item5.alt10" },
-      { src: "images/portrait-10-6.jpg", altKey: "item5.alt10" }
+      { src: "images/Couple%20Photo%20in%20Paris%2011.JPG", altKey: "item5.alt10" },
+      { src: "images/Couple%20Photo%20in%20Paris%2012.JPG", altKey: "item5.alt10" },
+      { src: "images/Couple%20Photo%20in%20Paris%2013.JPG", altKey: "item5.alt10" },
+      { src: "images/Couple%20Photo%20in%20Paris%2014.JPG", altKey: "item5.alt10" },
+      { src: "images/Couple%20Photo%20in%20Paris%2015.JPG", altKey: "item5.alt10" },
+      { src: "images/Couple%20Photo%20in%20Paris%2016.JPG", altKey: "item5.alt10" }
     ]}
   };
 
