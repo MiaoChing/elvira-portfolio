@@ -506,7 +506,7 @@
   .lightbox-stage{
     grid-column: 2; display:flex; align-items:center; justify-content:center;
     max-height: 62vh; overflow:hidden; border-radius: var(--radius);
-    background: linear-gradient(165deg,#e7d3ad,#a97e51 55%,#5b3d24);
+    background: var(--bg);
   }
   .lightbox-stage img{ max-height:62vh; width:auto; max-width:100%; object-fit:contain; }
   .lightbox-nav{
@@ -742,6 +742,17 @@
               </div>
             </div>
             <div class="portrait-card-wrap reveal">
+              <button type="button" class="portrait-frame" data-open-series="s7" aria-haspopup="dialog">
+                <img src="images/sunset%201.JPG" alt="日落時分的金色光影人像" data-i18n-alt="item5.alt7" loading="lazy" onerror="this.style.display='none'">
+                <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>6</b></span>
+                <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
+              </button>
+              <div class="portrait-caption">
+                <h4 data-i18n="series.s7">夕陽映像</h4>
+                <button type="button" class="portrait-cta" data-open-series="s7" data-i18n="item5.more">查看更多 →</button>
+              </div>
+            </div>
+            <div class="portrait-card-wrap reveal">
               <button type="button" class="portrait-frame" data-open-series="s1" aria-haspopup="dialog">
                 <img src="images/portrait-01.jpg" alt="巴黎日常穿搭人像，自然光線與街景" data-i18n-alt="item5.alt1" loading="lazy" onerror="this.style.display='none'">
                 <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>4</b></span>
@@ -803,7 +814,7 @@
                 <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
               </button>
               <div class="portrait-caption">
-                <h4 data-i18n="series.s8">花園噴泉</h4>
+                <h4 data-i18n="series.s8">法式噴泉</h4>
                 <button type="button" class="portrait-cta" data-open-series="s8" data-i18n="item5.more">查看更多 →</button>
               </div>
             </div>
@@ -818,16 +829,6 @@
                 <button type="button" class="portrait-cta" data-open-series="s6" data-i18n="item5.more">查看更多 →</button>
               </div>
             </div>
-            <div class="portrait-card-wrap reveal">
-              <button type="button" class="portrait-frame" data-open-series="s7" aria-haspopup="dialog">
-                <img src="images/sunset%201.JPG" alt="日落時分的金色光影人像" data-i18n-alt="item5.alt7" loading="lazy" onerror="this.style.display='none'">
-                <span class="pf-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="14" height="14" rx="2"/><rect x="7" y="7" width="14" height="14" rx="2"/></svg><b>7</b></span>
-                <span class="pf-overlay"><span class="pf-more" data-i18n="item5.more">查看更多 →</span></span>
-              </button>
-              <div class="portrait-caption">
-                <h4 data-i18n="series.s7">夕陽映像</h4>
-                <button type="button" class="portrait-cta" data-open-series="s7" data-i18n="item5.more">查看更多 →</button>
-              </div>
             </div>
           </div>
 
@@ -885,7 +886,7 @@
       </div>
 
       <!--
-        作品：旅行攻略 
+        作品：旅行攻略
         第一本已經有連結（heyzine 線上翻頁書）。
         第二本尚未有連結，請將 href="files/travel-guide-2.pdf" 換成妳實際的 PDF 路徑，
         並把 PDF 放到與此網頁相同目錄下的 files 資料夾中即可。
@@ -1009,16 +1010,16 @@
       "services.eyebrow": "服務項目", "services.title": "服務項目",
       "services.subtitle": "每一項服務皆可依需求客製化，歡迎私訊討論報價。",
       "service1.title": "巴黎攝影", "service1.desc": "街拍、人像、生活紀錄，捕捉妳與巴黎相遇的獨特瞬間。",
-      "service2.title": "歐洲旅行規劃", "service2.desc": "從路線安排到在地私房景點，為妳打造專屬的歐洲旅行提案。",
+      "service2.title": "歐洲旅行規劃", "service2.desc": "從路線安排到在地私房景點，為你打造專屬的歐洲旅行提案。",
       "service3.title": "短影片創作", "service3.desc": "旅行、美食、日常，剪輯成有溫度、有節奏的短影片。",
       "services.cta": "私訊討論報價",
       "portfolio.eyebrow": "作品集", "portfolio.title": "作品集",
-      "portfolio.sub_photo": "個人寫真｜情侶旅拍", "portfolio.sub_video": "短影片創作", "portfolio.sub_pdf": "旅行攻略 PDF",
+      "portfolio.sub_photo": "個人寫真｜情侶旅拍", "portfolio.sub_video": "短影片創作", "portfolio.sub_pdf": "旅行攻略",
       "item1.title": "旅行紀錄", "item1.desc": "記錄旅途中的風景與心情切片。",
-      "item2.title": "餐廳開箱", "item2.desc": "巴黎在地餐廳的第一手味覺體驗。",
-      "item3.title": "旅行攻略", "item3.desc": "實用又浪漫的歐洲旅行小提醒。",
-      "item4.title": "巴黎旅行攻略｜免費限時領取", "item4.desc": "在巴黎生活的這半年，走過一些街道、看過一些風景，也慢慢記錄下屬於自己的巴黎生活軌跡。這份攻略整理了 12 大熱門景點、博物館參觀攻略與票價資訊、10 個在地人推薦的私房活動，以及交通、住宿等實用小提醒。希望把這些生活裡累積的小經驗，分享給即將來到巴黎的你，讓你的巴黎旅行少一點匆忙，多一點從容與享受。", "item4.cta": "下載 PDF",
-      "item4b.title": "多洛米蒂旅行攻略｜免費限時領取", "item4b.desc": "把一路看見的風景、走過的路，以及那些旅行途中才知道的小事，都記錄在這份攻略裡。從必訪景點、經典路線、交通方式、住宿建議，到行程安排與實用小提醒，把多洛米蒂旅行前需要知道的資訊整理在一起。希望這份攻略，能讓你在出發之前多一點準備，也在真正抵達山裡的那一刻，更自在地享受眼前的風景。", "item4b.cta": "查看線上手冊",
+      "item2.title": "餐廳開箱", "item2.desc": "巴黎在地餐廳推薦指南。",
+      "item3.title": "旅行攻略", "item3.desc": "多洛米蒂最實用的旅行攻略。",
+      "item4.title": "巴黎旅行攻略", "item4.desc": "在巴黎生活的這半年，走過一些街道、看過一些風景，也慢慢記錄下屬於自己的巴黎生活軌跡。這份攻略整理了 12 大熱門景點、博物館參觀攻略與票價資訊、10 個在地人推薦的私房活動，以及交通、住宿等實用小提醒。希望把這些生活裡累積的小經驗，分享給即將來到巴黎的你，讓你的巴黎旅行少一點匆忙，多一點從容與享受。", "item4.cta": "下載 PDF",
+      "item4b.title": "多洛米蒂旅行攻略", "item4b.desc": "把一路看見的風景、走過的路，以及那些旅行途中才知道的小事，都記錄在這份攻略裡。從必訪景點、經典路線、交通方式、住宿建議，到行程安排與實用小提醒，把多洛米蒂旅行前需要知道的資訊整理在一起。希望這份攻略，能讓你在出發之前多一點準備，也在真正抵達山裡的那一刻，更自在地享受眼前的風景。", "item4b.cta": "查看線上手冊",
       "a11y.heyzine": "Heyzine",
       "portfolio.pdf_note": "若需要協助規劃行程或是巴黎地陪，歡迎私訊報價 →",
       "item5.tag": "個人寫真｜情侶旅拍", "item5.title": "個人寫真｜情侶旅拍",
@@ -1038,9 +1039,9 @@
       "item5.alt8": "噴泉旁的人像，綠意環繞",
       "item5.alt9": "比哈坎橋（鐵塔）前的情侶雙人寫真",
       "item5.alt10": "塞納河畔拱廊下的情侶雙人寫真，夕陽光影",
-      "series.s1": "巴黎日常", "series.s2": "婚紗物語", "series.s3": "義式假期", "series.s4": "漫遊街拍",
-      "series.s5": "羅浮宮", "series.s6": "皇家花園", "series.s7": "日落時分",
-      "series.s8": "噴泉", "series.s9": "鐵塔雙人", "series.s10": "河岸情書",
+      "series.s1": "巴黎日常", "series.s2": "婚紗寫真", "series.s3": "義式假期", "series.s4": "漫遊街拍",
+      "series.s5": "羅浮宮", "series.s6": "皇家花園", "series.s7": "夕陽映像",
+      "series.s8": "噴泉", "series.s9": "鐵塔戀人", "series.s10": "河岸情書",
       "contact.eyebrow": "聯繫方式", "contact.title": "聯繫方式",
       "contact.subtitle": "想預約拍攝、討論旅行規劃，或短影片合作，都歡迎與我聯繫。",
       "contact.email": "電子郵件", "contact.ig": "Instagram", "contact.linkedin": "LinkedIn",
@@ -1233,7 +1234,6 @@
     s7: { label: "07", labelKey: "series.s7", images: [
       { src: "images/sunset%201.JPG", altKey: "item5.alt7" },
       { src: "images/sunset%202.JPG", altKey: "item5.alt7" },
-      { src: "images/sunset%203.JPG", altKey: "item5.alt7" },
       { src: "images/sunset%204.JPG", altKey: "item5.alt7" },
       { src: "images/sunset%205.JPG", altKey: "item5.alt7" },
       { src: "images/sunset%206.JPG", altKey: "item5.alt7" },
